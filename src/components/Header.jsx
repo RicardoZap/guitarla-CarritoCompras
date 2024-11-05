@@ -1,6 +1,6 @@
 import { useMemo } from "react"
 
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity }) {
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart }) {
 
     // Stater Derivado
     const isEmpty = useMemo(() => cart.length === 0, [cart])
@@ -12,14 +12,15 @@ export default function Header({ cart, removeFromCart, increaseQuantity, decreas
                 <div className="row justify-content-center justify-content-md-between">
                     <div className="col-8 col-md-3">
                         <a href="index.html">
-                            <img className="img-fluid" src="./public/img/logo.svg" alt="imagen logo" />
+                            <h2>Guitar <span>LA</span></h2>
+                            <h3 className="subtitle">Instrumentos</h3>
                         </a>
                     </div>
                     <nav className="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
                         <div
                             className="carrito"
                         >
-                            <img className="img-fluid" src="./public/img/carrito.png" alt="imagen carrito" />
+                            <img className="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
 
                             <div id="carrito" className="bg-white p-3">
                                 {isEmpty ? (
@@ -83,7 +84,9 @@ export default function Header({ cart, removeFromCart, increaseQuantity, decreas
                                         <p className="text-end">Total pagar: <span className="fw-bold">${cartTotal}</span></p>
                                     </>
                                 )}
-                                <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                                <button 
+                                    className="btn btn-dark w-100 mt-3 p-2"
+                                    onClick={clearCart}>Vaciar Carrito</button>
                             </div>
                         </div>
                     </nav>
